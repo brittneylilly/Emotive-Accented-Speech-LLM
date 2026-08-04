@@ -1,5 +1,5 @@
 # Emotive Accented Speech LLM
-The Emotive Accented Speech LLM is a large language model built to generate text responses to prompts in the style of native Mandarin-speaking, English language learners, matching a selected emotional state: Neutral, Negative, or Pauses (which signals anxiety). The LLM is trained on human-verified transcripts of native Mandarin speakers, capturing the exact grammar and wording used when speaking English.
+The Emotive Accented Speech LLM is a large language model built to generate text responses to prompts in the style of native Mandarin-speaking, English language learners, matching a selected emotional state: Neutral, Negative, or Pauses (potentially signaling language anxiety). The LLM is trained on human-verified transcripts of native Mandarin speakers, capturing the exact grammar and wording used when speaking English.
 
 I built this LLM from scratch using a custom transformer architecture, trained entirely on the `EDEN ASR Dataset` that I manually verified, annotated, and labeled, rather than starting with an existing pre-trained model and fine-tuning it.
 
