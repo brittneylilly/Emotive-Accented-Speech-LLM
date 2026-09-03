@@ -3,7 +3,7 @@ Script to transfer the transcripts, along with their emotion label and Unit labe
 from the excel file into a JSON (via pandas/python) so that data can be used/readable
 by the LLM
 '''
-#run from Git Bash by typing: python src/extract_data.py
+#run from repo's main folder in Git Bash by typing: python src/extract_data.py
 #you must ensure you're in the virtual environment first
 
 import pandas as pd
