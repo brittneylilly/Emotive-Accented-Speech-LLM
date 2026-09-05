@@ -1,6 +1,6 @@
 '''
-Script to extract just the transcript texts from the json file inorder to 
-create a .txt of the transcript texts to be used in the BPE tokenization training.
+Script to extract just the transcript texts from the json file of the cleaned transcripts
+inorder to create a .txt of the transcript texts to be used in the tokenization training.
 '''
 #To Run Script
 #use Git Bash and go to main repo directory
@@ -18,6 +18,6 @@ df = pd.read_json("data/cleaned_transcripts.json", orient="records")
 df = df["corrected whisper_transcript"]
 
 #write each row of the df column to the .txt file
-with open("data/transcripts_for_BPE_tokenization_training.txt", "w", encoding="utf-8") as f:
+with open("data/input_file_transcripts_for_training_tokenizer.txt", "w", encoding="utf-8") as f:
     for row in df:
         f.write(row + "\n")
