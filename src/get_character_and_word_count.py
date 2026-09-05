@@ -1,12 +1,13 @@
 '''
 Script to get the count of unique characters and the count of unique words
 in the .txt file  of transcripts that I will train the tokenizer on. 
-Knowing number of unique characters inform us what the minimum size of the vocubulary should be.
+Knowing the number of unique characters tells me the the minimum size 
+that the vocubulary should be.
 
 Run this script before training the tokenizer
 
 You must know and set the predetermined vocubulary size in the tokenizer
-training. vocab size is set in my file train_tokenizer.py
+training script. vocab size is set in my file train_tokenizer.py
 
 #To run this script:
 Open git bash
