@@ -96,9 +96,9 @@ tokenizer.pre_tokenizer = Whitespace()
 
 # since the vocabulary keys are strings, the special tokens must be strings in order to be 
 # assiged a token ID like all other vocab keys.
-# It is important to know that the special tokens themselves have no actual meaning translative
-# meaning to anything in this entire LLM buidling process.Like nothing
-# mis going to interpret UNK, for example, as an instruction to go do something.
+# It is important to know that the special tokens themselves have no actual translative
+# meaning to anything in this entire LLM buidling process (nothing is going to 
+# interpret UNK, for example, as an instruction to go do something).
 
 # "[UNK]" stands for unknown token. We are telling the tokenizer, during encoding, in the 
 # rare event you come across a string in the .txt transcript text file that is not a key in the 
@@ -127,6 +127,9 @@ tokenizer.pre_tokenizer = Whitespace()
 # the sequence of strings before "[EOS]" is completely unrelated th the sequence of strings after it. 
 # So having this will help my model learn how a complete response starts and ends. It's important to note
 # that just like the other special tokens, the string phrase "[EOS]" has no actual meaning.
+
+#"[NEUTRAL]", "[NEGATIVE]", "[PAUSES]" are the 3 emotion labels of 256 of the transripts
+
 '''
 The BpeTrainer will stop running once it reaches the vocab_size OR once it
 runs out of vocab words to form from the merge strings based on the 
@@ -140,7 +143,7 @@ training, if a merged string only appears 1 time, it will not be turned into
 a vocabulary key/word. The merged string must appear at least 2 times to be considered
 a vocabulary word and given a token ID.
 '''
-trainer = BpeTrainer(vocab_size=30000, min_frequency=2,special_tokens=["[UNK]", "[PAD]", "[EOS]"]) 
+trainer = BpeTrainer(vocab_size=30000, min_frequency=2,special_tokens=["[UNK]", "[PAD]", "[EOS]", "[NEUTRAL]", "[NEGATIVE]", "[PAUSES]"]) 
 
 
 
@@ -170,11 +173,10 @@ tokenizer.train(file, trainer)
 The vocab size is the number of keys in the vocabulary dictionary.
 When I run this script, the vocab size will print in the terminal on the last line. 
 #Regarding the with_added_tokens parameter set to True, this just means that the 
-#vocab size will include the number of special tokens I defined earlier(UNK, PAD, EOS). I only
-#used 3 specal tokens so they only add +3 in the vocab size count.
+#vocab size will include the number of special tokens I defined earlier
 '''
 print(tokenizer.get_vocab_size(with_added_tokens=True))
-#I ran the script and my vocab size is 6,131
+
 
 
 #Indicate the name of the file and file path where you want the 
@@ -193,14 +195,14 @@ tokenizer.save("data/output_vocabulary_file_from_trained_tokenizer.json")
 '''
 My output from running the script:
 
-Vocabulary size (aka number of keys in the vocab dict): 6,131
+Vocabulary size (aka number of keys in the vocab dict): 6134
 
-Count of words/punctionations formed as tuples by the pretokenizer: 6,423
+Count of words/punctionations formed as tuples by the pretokenizer: 6423
 
-Counted pairs: 6,423  #this is the count of unique words/subwords being analyzed to determine
+Counted pairs: 6423  #this is the count of unique words/subwords being analyzed to determine
 if they can formed with something else a merged pair
 
-Number of merge pairs formed after meeting min_frequency: 6,047  #this is equal to the number 
+Number of merge pairs formed after meeting min_frequency: 6047  #this is equal to the number 
 of sublists in the merges list
 
 '''
