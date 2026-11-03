@@ -21,7 +21,7 @@ tokenizer, models = load_everything()
 st.title("Emotive, Accented Speech Language Model")
 st.write(
     "Pick an emotion, type the start of a sentence, and the language model will complete the sentence. "
-    "This language model was trained on transcripts of native Mandarin speakers practicing spoken English," 
+    "This language model was trained on transcripts of native Mandarin speakers practicing spoken English, " 
     "so the generated sentences imitate their phrasing and grammar patterns, including repeated words and restarts."  
 )
 
